@@ -1,0 +1,17 @@
+.env
+.ipynb_checkpoints
+CVs/
+__pycache__/
+.DS_Store
+.pytest_cache/
+pycache/
+migrations/
+/.env
+/docker-compose.yml
+/Dockerfile* 
+/dockerfiles/
+/celerybeat.pid 
+/celerybeat-schedule 
+/celeryd.pid
+/celery_results/
+/instance/
