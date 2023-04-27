@@ -1,0 +1,12 @@
+
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 19px;
+    background-color: #8c9b9c
+}
+
+.foottext{
+    color: rgb(0, 0, 0);
+    background: #8c9b9c;
+    padding: 30px;
+}
