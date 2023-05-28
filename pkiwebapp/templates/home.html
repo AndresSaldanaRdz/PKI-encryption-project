@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 
 <div class="container text-center"> 
     <div class="row">
@@ -13,7 +13,7 @@
 
                 <form method="POST">
                     {{form.hidden_tag()}}
-                    <h1> <strong>PKI Encryption LiCore</strong></h1>
+                    <h1 style="font-size: 80px; color: white; -webkit-text-stroke: 2px rgb(0, 0, 0);"> <strong>PKI Encryption LiCore</strong></h1>
                     <br>
                     <div class="form-floating">
                         {{ form.email(class="form-control", type="email",style="font-size: 20px; resize: vertical; height: 65px; border: 5px solid black;", id="floatingInput1", placeholder="example@example.com") }}

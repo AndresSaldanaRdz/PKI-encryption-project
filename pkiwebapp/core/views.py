@@ -2,7 +2,9 @@ from flask import render_template, Blueprint, redirect, url_for, session
 from flask_login import login_required
 from pkiwebapp.core.forms import SignInForm 
 from pkiwebapp.models import Crypto
+import plotly.graph_objects as go
 from pkiwebapp import db
+import pandas as pd
 import datetime
 import random 
 
@@ -28,8 +30,21 @@ def insideview(check1):
     else:
         pass
 
-    new_record = Crypto(fecha=datetime.date.today(), intervalo=1, medida=4.7, identificador='P')
-    db.session.add(new_record)
-    db.session.commit()
+    #new_record = Crypto(fecha=datetime.date.today(), intervalo=1, medida=4.7, identificador='P')
+    #db.session.add(new_record)
+    #db.session.commit()
 
-    return render_template('inside.html')
+    df = pd.read_csv("/Users/andressaldana/Documents/GitHub/PKI-encryption-project/pkiwebapp/Test.csv")
+    #df['Fecha'] = pd.to_datetime(df['Fecha'])
+
+    dates = df["Fecha"]
+    #values = df.groupby('Fecha')['Medida'].mean().reset_index()
+    values = df["Medida"]
+
+    fig = go.Figure() # Create the plotly figure
+    fig.add_trace(go.Scatter(x=dates, y=values, mode='lines+markers'))
+    fig.update_layout(xaxis_title='Fecha', yaxis_title='Medidas') # Set x-axis and y-axis labels
+    graph = fig.to_html(full_html=False) # Render the plot in HTML
+
+
+    return render_template('inside.html', graph=graph)
