@@ -20,3 +20,16 @@ class Crypto(db.Model):
 
     def __repr__(self):
         return f"ID: {self.id} - Fecha: {self.username} - Intervalo: {self.intervalo} - Medida: {self.medida} - Identificador: {self.identificador}"
+
+class Tiempo(db.Model): 
+
+    __tablename__ = 'tiempos'
+
+    id = db.Column(db.Integer, primary_key=True)
+    dato = db.Column(db.Integer)
+
+    def __init__(self, dato):
+        self.dato = dato
+
+    def __repr__(self):
+        return f"ID: {self.id} - Dato: {self.dato}"

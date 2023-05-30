@@ -11,3 +11,8 @@ class SignInForm(FlaskForm):
     def validate_password(self, password):
         if str(password.data) != "123":
             raise ValidationError("Wrong Password")
+        
+
+# class DialyForm(FlaskForm):
+
+#     selection =
