@@ -30,22 +30,27 @@ def insideview(check1):
     else:
         pass
 
-    #new_record = Crypto(fecha=datetime.date.today(), intervalo=1, medida=4.7, identificador='P')
-    #db.session.add(new_record)
-    #db.session.commit()
-
     return render_template('inside.html')
 
 @core.route('/inside/history', methods=['GET', 'POST'])
 def historyview():
 
-    df = pd.read_csv("/Users/andressaldana/Documents/GitHub/PKI-encryption-project/pkiwebapp/Test.csv")
+    query = Crypto.query.all()
 
-    df['Fecha'] = pd.to_datetime(df['Fecha'],dayfirst = True)
-    df1 = df.groupby(['Fecha']).mean()
+    list_name = [['2001-04-14', '0', '0', 'P']]
+
+    df = pd.DataFrame(list_name, columns=['fecha','intervalo','medida','identificador'])
+
+    for x in query:
+        new_rows = pd.DataFrame([[x.fecha, x.intervalo, x.medida, x.identificador]], columns=['fecha','intervalo','medida','identificador'])
+        # Append new rows
+        df = pd.concat([df, new_rows], ignore_index=True)
+
+    df['fecha'] = pd.to_datetime(df['fecha'],dayfirst = True)
+    df1 = df.groupby(['fecha']).mean()
 
     dates = df1.index
-    values = df1["Medida"]
+    values = df1["medida"]
 
     fig = go.Figure() # Create the plotly figure
     fig.add_trace(go.Scatter(x=dates, y=values, mode='lines+markers'))
@@ -91,5 +96,9 @@ def uploadview():
 
     test = Tiempo.query.first()
     print(test.dato)
+
+    test = Crypto.query.all()
+    for x in test:
+        print(x)
 
     return render_template('upload.html')

@@ -19,7 +19,7 @@ class Crypto(db.Model):
         self.identificador = identificador
 
     def __repr__(self):
-        return f"ID: {self.id} - Fecha: {self.username} - Intervalo: {self.intervalo} - Medida: {self.medida} - Identificador: {self.identificador}"
+        return f"ID: {self.id} - Fecha: {self.fecha} - Intervalo: {self.intervalo} - Medida: {self.medida} - Identificador: {self.identificador}"
 
 class Tiempo(db.Model): 
 

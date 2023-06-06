@@ -1,12 +1,12 @@
 
 body{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:Avenir;
     font-size: 19px;
-    background-color: #e8652e
+    background-color: #DC4531
 }
 
 .foottext{
-    color: rgb(0, 0, 0);
-    background: #4b4844;
+    color: #66615E;
+    background: #E4D9D2;
     padding: 30px;
 }

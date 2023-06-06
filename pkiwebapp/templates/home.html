@@ -7,38 +7,46 @@
     <div class="row">
         <div class="col-md-3">
         </div>
-        <div class="col-md-6">
-            <main class="form-signin w-100 m-auto">
+        <div class="col-md-6 shadow" style="background-color: #E4D9D2; border-radius: 20px;">
+            <div style="margin: 40px;">
+                <main class="form-signin w-100 m-auto">
 
+                    <form method="POST">
+                        {{form.hidden_tag()}}
+                        <img src="{{ url_for('static', filename='logoLi.png') }}"  style="padding-top: 40px; padding-bottom: 60px; height: 200px; width: 340px;" class="img-fluid" alt="Sorry, this image is toast!">
 
-                <form method="POST">
-                    {{form.hidden_tag()}}
-                    <h1 style="font-size: 80px; color: white; -webkit-text-stroke: 2px rgb(0, 0, 0);"> <strong>PKI Encryption LiCore</strong></h1>
-                    <br>
-                    <div class="form-floating">
-                        {{ form.email(class="form-control", type="email",style="font-size: 20px; resize: vertical; height: 65px; border: 5px solid black;", id="floatingInput1", placeholder="example@example.com") }}
-                        <label for="floatingInput1">Email</label>
-                        <ul>
-                            {% for error in form.email.errors %}
-                                <li style="color:red; text-align: left; padding: 10px 0px;">{{error}}</li>
-                            {% endfor %}
-                        </ul>  
-                    </div>
-                    <div class="form-floating">
-                        {{ form.password(class="form-control", style="font-size: 20px; resize: vertical; height: 65px; border: 5px solid black;", id="floatingPassword1", placeholder="password") }}
-                        <label for="floatingPassword1">Password</label>
-                        <ul>
-                            {% for error in form.password.errors %}
-                                <li style="color:red; text-align: left; padding: 10px 0px;">{{error}}</li>
-                            {% endfor %}
-                        </ul>
-                    </div> 
-                    <br>
-                    <button class="w-50 btn btn-lg btn-dark" type="submit"> <strong>Sign in</strong></button>
-                </form>
+                        <h2 style="text-align: left; color: #66615E;">Iniciar Sesion</h2>
+                        <h5 style="text-align: left; padding-bottom: 55px; color: #66615E;">Utiliza tu usuario y contraseña para entrar</h5>
 
+                        <div class="form-floating">
+                            {{ form.email(type="email", class="form-control shadow", id="floatingInput", placeholder="name@example.com", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                            <label for="floatingInput">Email</label>
+                            <ul>
+                                {% for error in form.email.errors %}
+                                    <li style="color:red; text-align: left; padding: 10px 0px;">{{error}}</li>
+                                {% endfor %}
+                            </ul>  
+                        </div>
+                        <div class="form-floating">
+                            {{ form.password(type="password", class="form-control shadow", id="floatingInput", placeholder="name@example.com", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                            <label for="floatingPassword">Password</label>
+                            <ul>
+                                {% for error in form.password.errors %}
+                                    <li style="color:red; text-align: left; padding: 10px 0px;">{{error}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div> 
+                        <br>
+                        <button class="btn btn-secondary w-50 py-2 rounded-pill shadow" type="submit" style="background-color: #E4D9D2; color: #66615E; border: none;">Iniciar Sesion</button>
+                        <div class="row">
+                            <p> </p>
+                            <br>
+                            <p> </p>
+                        </div>
+                    </form>
 
-            </main>
+                </main>
+            </div>
         </div>
         <div class="col-md-3">
         </div>
