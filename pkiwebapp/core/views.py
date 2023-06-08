@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from pkiwebapp import db
 import pandas as pd
 import datetime
-import random 
+import random
 
 core = Blueprint('core', __name__)
 
@@ -37,9 +37,7 @@ def historyview():
 
     query = Crypto.query.all()
 
-    list_name = [['2001-04-14', '0', '0', 'P']]
-
-    df = pd.DataFrame(list_name, columns=['fecha','intervalo','medida','identificador'])
+    df = pd.DataFrame(columns=['fecha','intervalo','medida','identificador'])
 
     for x in query:
         new_rows = pd.DataFrame([[x.fecha, x.intervalo, x.medida, x.identificador]], columns=['fecha','intervalo','medida','identificador'])
@@ -53,8 +51,47 @@ def historyview():
     values = df1["medida"]
 
     fig = go.Figure() # Create the plotly figure
-    fig.add_trace(go.Scatter(x=dates, y=values, mode='lines+markers'))
-    fig.update_layout(xaxis_title='Fecha', yaxis_title='Medidas') # Set x-axis and y-axis labels
+    fig.add_trace(go.Scatter(
+        x=dates,
+        y=values,
+        mode='lines+markers',
+        line=dict(color='black'),  # Change the line color
+        marker=dict(
+            color='red',  # Change the plot points color
+            size=6,  # Set the size of the plot points
+            symbol='circle'  # Set the symbol of the plot points
+        )
+    ))
+    # Customize the graph
+    fig.update_layout(
+        xaxis_title='Fecha',  # Set the x-axis label
+        yaxis_title='Promedio de medidas diaria',  # Set the y-axis label
+        xaxis=dict(
+            showgrid=False,  # Remove x-axis grid lines
+            showline=True,  # Show x-axis line
+            linecolor='black',  # Set x-axis line color
+            linewidth=2,  # Set x-axis line thickness
+            zeroline=False,  # Remove x-axis zero line
+            tickfont=dict(size=12, family='Arial'),  # Customize x-axis tick labels font
+            ticks='outside',  # Set x-axis ticks outside the plot
+            ticklen=8,  # Set length of the x-axis ticks
+            tickwidth=0  # Remove separation lines between axis line and tick labels
+        ),
+        yaxis=dict(
+            showgrid=False,  # Remove y-axis grid lines
+            showline=True,  # Show y-axis line
+            linecolor='black',  # Set y-axis line color
+            linewidth=2,  # Set y-axis line thickness
+            zeroline=False,  # Remove y-axis zero line
+            tickfont=dict(size=12, family='Arial'),  # Customize y-axis tick labels font
+            ticks='outside',  # Set y-axis ticks outside the plot
+            ticklen=8,  # Set length of the y-axis ticks
+            tickwidth=0  # Remove separation lines between axis line and tick labels
+        ),
+        plot_bgcolor='rgba(0,0,0,0)',  # Set the plot background color
+        paper_bgcolor='rgba(0,0,0,0)',  # Set the paper background color
+        font=dict(size=12, family='Avenir')  # Customize the font of the graph
+    )
     graph = fig.to_html(full_html=False) # Render the plot in HTML
 
     return render_template('history.html', graph=graph)

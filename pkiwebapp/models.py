@@ -7,7 +7,7 @@ class Crypto(db.Model):
     __tablename__ = 'cryptos'
 
     id = db.Column(db.Integer, primary_key=True)
-    fecha = db.Column(db.Date, default=date.today)
+    fecha = db.Column(db.Date, default=date.today())
     intervalo = db.Column(db.Integer)
     medida = db.Column(db.Float)
     identificador = db.Column(db.String(64))
