@@ -47,6 +47,26 @@
             <div class="row" style="margin: 20px">
                 <h1>Grafico Diario</h1>
             </div>
+            <form method="POST">
+                <div class="row" style="margin: 20px">
+                    {{form.hidden_tag()}}
+                    <div class="col-2">
+                        {{ form.year(class="form-control shadow", id="floatingInput1", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-2">
+                        {{ form.month(class="form-control shadow", id="floatingInput2", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-2">
+                        {{ form.day(class="form-control shadow", id="floatingInput3", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-2">
+                        {{ form.cOp(type="submit", class="form-control shadow", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>  
+                    <div class="col-4">
+                        {{ form.submit(type="submit", class="form-control shadow", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>               
+                </div>
+            </form>
             <div class="row">
                 <div id="graph-container">{{ graph|safe }}</div>
             </div>

@@ -43,10 +43,49 @@
         <div class="col-1">
         </div>
 
-        <div class="col-8" style="background-color: #E4D9D2; border-radius: 20px; height: 650px;">
+        <div class="col-8" style="background-color: #E4D9D2; border-radius: 20px; height: 700px;">
             <div class="row" style="margin: 20px">
                 <h1>Grafico de Comparacion</h1>
             </div>
+            <form method="POST">
+                <div class="row" style="margin: 20px">
+                    {{form.hidden_tag()}}
+                    <div class="col-3">
+                        {{ form.year(class="form-control shadow", id="floatingInput1", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-3">
+                        {{ form.month(class="form-control shadow", id="floatingInput2", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-3">
+                        {{ form.day(class="form-control shadow", id="floatingInput3", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-3">
+                        {{ form.cOp(type="submit", class="form-control shadow", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>            
+                </div>
+                <div class="row" style="margin: 20px">
+                    {{form.hidden_tag()}}
+                    <div class="col-3">
+                        {{ form.year2(class="form-control shadow", id="floatingInput1", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-3">
+                        {{ form.month2(class="form-control shadow", id="floatingInput2", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-3">
+                        {{ form.day2(class="form-control shadow", id="floatingInput3", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>
+                    <div class="col-3">
+                        {{ form.cOp2(type="submit", class="form-control shadow", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>     
+                </div>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        {{ form.submit(type="submit", class="form-control shadow", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div> 
+                    <div class="col-4"></div>
+                </div>
+            </form>
             <div class="row">
                 <div id="graph-container">{{ graph|safe }}</div>
             </div>
