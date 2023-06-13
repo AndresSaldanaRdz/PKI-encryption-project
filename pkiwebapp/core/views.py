@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, redirect, url_for, session
 from flask_login import login_required
-from pkiwebapp.core.forms import SignInForm, SelectDay, SelectDay2
+from pkiwebapp.core.forms import SignInForm, SelectDay, SelectDay2, CambiarDelay
 from pkiwebapp.models import Crypto, Tiempo
 import plotly.graph_objects as go
 from pkiwebapp import db
@@ -226,18 +226,18 @@ def compareview():
 
     return render_template('compare.html', form=form, graph=results)
 
-@core.route('/inside/upload_csv', methods=['GET', 'POST'])
+@core.route('/inside/toggle', methods=['GET', 'POST'])
 def uploadview():
 
-    #new_record = Tiempo(dato=3)
-    #db.session.add(new_record)
-    #db.session.commit()
+    form = CambiarDelay()
 
     test = Tiempo.query.first()
-    print(test.dato)
+    delay = test.dato
 
-    test = Crypto.query.all()
-    for x in test:
-        print(x)
+    if form.validate_on_submit():
+        test.dato = int(form.newDelay.data)
+        db.session.commit()
 
-    return render_template('upload.html')
+        return redirect(url_for('core.uploadview'))
+
+    return render_template('upload.html', form=form, delay=delay)

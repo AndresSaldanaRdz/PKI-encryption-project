@@ -48,3 +48,10 @@ class SelectDay2(FlaskForm):
     cOp = SelectField('C o P', choices=[("C", "Consumo"), ("P", "Producción")], validators=[DataRequired()])
     cOp2 = SelectField('C o P', choices=[("C", "Consumo"), ("P", "Producción")], validators=[DataRequired()])
     submit = SubmitField('Buscar')
+
+
+class CambiarDelay(FlaskForm):
+
+    delays = [("1","1"),("3","3"),("5","5")]
+    newDelay = SelectField('Year', choices=delays, validators=[DataRequired()])
+    submit = SubmitField('Cambiar')
