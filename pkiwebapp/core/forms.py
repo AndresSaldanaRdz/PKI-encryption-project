@@ -2,6 +2,10 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, EmailField, ValidationError, SelectField
 from wtforms.validators import InputRequired, DataRequired
 
+#  en este archivo estan declarados todos los formularios que se usan en las diferentes vistas, osea informacion que le pedimos al cliente
+
+#  este formulario es es del vista de entrada, asi que pedimos al usario un correo y una contraseña, luego verificamos que esat contrasela
+#  sea la correcta, en caso de que si sea los dejamos entrar al sitio
 class SignInForm(FlaskForm):
 
     email = EmailField("Please provide your Email", validators=[InputRequired("Please input your Email")])
@@ -11,12 +15,9 @@ class SignInForm(FlaskForm):
     def validate_password(self, password):
         if str(password.data) != "123":
             raise ValidationError("Wrong Password")
-        
 
-# class DialyForm(FlaskForm):
-
-#     selection =
-
+#  en este formulario le pedimos al usario un año, un mes y un dia, aparte que seleccine entre consumo o produccion
+#  como utilizamos "SelectField" limitamos al usario en las opciones que tiene para eligir
 class SelectDay(FlaskForm):
 
     years = [(str(year), str(year)) for year in range(2013, 2015)] 
@@ -31,6 +32,8 @@ class SelectDay(FlaskForm):
     cOp = SelectField('C o P', choices=[("C", "Consumo"), ("P", "Producción")], validators=[DataRequired()])
     submit = SubmitField('Buscar')
 
+#  este formulario es muy similar al enterior solo que pedimos dos veces la misma informacion para poder poder crear la grafica con las dos lineas
+#  cabe mencionar que todos los formularios tiene un boton de "submit" para conectar las acciones de presionar un boton y validar el formulario
 class SelectDay2(FlaskForm):
 
     years = [(str(year), str(year)) for year in range(2013, 2015)] 
@@ -49,7 +52,8 @@ class SelectDay2(FlaskForm):
     cOp2 = SelectField('C o P', choices=[("C", "Consumo"), ("P", "Producción")], validators=[DataRequired()])
     submit = SubmitField('Buscar')
 
-
+#  es el ultimo formulario en el que le damos al usario la eleccion del tiempo de delay, muy parecido a los demas
+# en todos los campos que consideramos que la eleccion del usario es indispensable añadimos el validador "data required"
 class CambiarDelay(FlaskForm):
 
     delays = [("1","1"),("3","3"),("5","5")]

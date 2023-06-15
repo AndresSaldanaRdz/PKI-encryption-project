@@ -3,6 +3,7 @@
 
 <br><br><br>
 
+<!-- esta seccion es igual en todas las vistas -->
 <div class="container text-center">
     <div class="row">
 
@@ -58,6 +59,7 @@
             </div>
             <form method="POST">
                 <div class="row" style="margin: 20px">
+                    <!-- aqui estamos desplegando el fomrulario para poder recibir inputs del usuario -->
                     {{form.hidden_tag()}}
                     <div class="col-2">
                         {{ form.year(class="form-control shadow", id="floatingInput1", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
@@ -77,6 +79,7 @@
                 </div>
             </form>
             <div class="row">
+                <!-- aqui utilizamos jinja para poder desplegar la grafica que generamos en al vista, es como hacer display de una variable -->
                 <div id="graph-container">{{ graph|safe }}</div>
             </div>
         </div>

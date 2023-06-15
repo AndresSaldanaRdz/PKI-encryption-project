@@ -1,29 +1,19 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
-from flask_migrate import Migrate
 from dotenv import load_dotenv
 from datetime import timedelta
 from OpenSSL import SSL
 
 app = Flask(__name__)
 
-load_dotenv()
-app.config['SECRET_KEY'] = os.environ.get('LLAVE_SECRETA') 
+load_dotenv()  # cargamos el archivo oculto .env
+app.config['SECRET_KEY'] = os.environ.get('LLAVE_SECRETA')   # configuramos la llave secreta para la aplicacion
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI') 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI')   # establecemos el url de conexion hacia la base de datos
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-# login_manager = LoginManager() 
-# login_manager.init_app(app) 
-# login_manager.login_view = 'core.homeview' 
-
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=8)
+db = SQLAlchemy(app)  # creamos una instancia de la base de datos con sqlalchemy
 
 from pkiwebapp.core.views import core
 
-app.register_blueprint(core)
-
-# crear la base de datos
+app.register_blueprint(core)  # registramos los archivos .py que usaremos despues
