@@ -52,6 +52,12 @@ class SelectDay2(FlaskForm):
     cOp2 = SelectField('C o P', choices=[("C", "Consumo"), ("P", "Producción")], validators=[DataRequired()])
     submit = SubmitField('Buscar')
 
+# formulario para poder seleccionar entre producion y consumo para los ddatos historicos
+class SelectHistory(FlaskForm):
+
+    cOp = SelectField('C o P', choices=[("C", "Consumo"), ("P", "Producción")], validators=[DataRequired()])
+    submit = SubmitField('Buscar')
+
 #  es el ultimo formulario en el que le damos al usario la eleccion del tiempo de delay, muy parecido a los demas
 # en todos los campos que consideramos que la eleccion del usario es indispensable añadimos el validador "data required"
 class CambiarDelay(FlaskForm):

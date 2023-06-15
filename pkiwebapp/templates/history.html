@@ -55,11 +55,25 @@
         <div class="col-8" style="background-color: #E4D9D2; border-radius: 20px; height: 650px;">
             <div class="row" style="margin: 20px">
                 <h1>Grafico Historico</h1>
+                <hr style="border-width: 3px;">
             </div>
+            <form method="POST">
+                <div class="row" style="margin: 20px">
+                    <!-- aqui estamos desplegando el fomrulario para poder recibir inputs del usuario -->
+                    {{form.hidden_tag()}}
+                    <div class="col-6">
+                        {{ form.cOp(type="submit", class="form-control shadow", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>  
+                    <div class="col-6">
+                        {{ form.submit(type="submit", class="form-control shadow", style="background-color: #E4D9D2; color: #66615E; border: none;") }}
+                    </div>               
+                </div>
+            </form>
             <div class="row">
                 <div id="graph-container">{{ graph|safe }}</div>
             </div>
         </div>
+        
     </div>
 </div>
 

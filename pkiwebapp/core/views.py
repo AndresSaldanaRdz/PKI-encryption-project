@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, redirect, url_for, session
 from flask_login import login_required
-from pkiwebapp.core.forms import SignInForm, SelectDay, SelectDay2, CambiarDelay
+from pkiwebapp.core.forms import SignInForm, SelectDay, SelectDay2, CambiarDelay, SelectHistory
 from pkiwebapp.models import Crypto, Tiempo
 import plotly.graph_objects as go
 from pkiwebapp import db
@@ -26,12 +26,12 @@ def genGraph(query, mean=1):
     # en caso de que el indicador de mean sea igual a 1, agrupamos la columnas por fecha, es decir agrupamos por dias, ya que puede haber varias medidas en un solo dia
     # tambien calculamos la media para ese dia
     if mean == 1:
-        df1 = df.groupby(['fecha']).mean()
+        df1 = df.groupby('fecha')['medida'].mean().reset_index()
     else:
         df1 = df
 
     # tomamos las columnas de interes del datafrmae
-    dates = df1.index
+    dates = df1["fecha"]
     values = df1["medida"]
 
     fig = go.Figure() # creamos un plotly figure
@@ -175,11 +175,19 @@ def insideview(check1):
 @core.route('/inside/history', methods=['GET', 'POST'])
 def historyview():
 
-    query = Crypto.query.all()
+    form = SelectHistory()
 
-    graph = genGraph(query,1) # llamamos a la funcion descrita previamente para generar la grafica en html del query
+    results = ""
 
-    return render_template('history.html', graph=graph) # le pasamos la grafica en html el template de html
+    if form.validate_on_submit():
+
+        query = Crypto.query.filter_by(identificador = form.cOp.data).all()
+
+        graph = genGraph(query,1) # llamamos a la funcion descrita previamente para generar la grafica en html del query
+
+        return render_template('history.html', form=form, graph=graph)
+
+    return render_template('history.html', form=form, graph=results) # le pasamos la grafica en html el template de html
 
 # esta vista es para ver un dia en especifico
 @core.route('/inside/daily', methods=['GET', 'POST'])
