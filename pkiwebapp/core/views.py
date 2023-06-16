@@ -27,11 +27,12 @@ def genGraph(query, mean=1):
     # tambien calculamos la media para ese dia
     if mean == 1:
         df1 = df.groupby('fecha')['medida'].mean().reset_index()
+        dates = df1["fecha"]
     else:
         df1 = df
+        dates = df1.index
 
     # tomamos las columnas de interes del datafrmae
-    dates = df1["fecha"]
     values = df1["medida"]
 
     fig = go.Figure() # creamos un plotly figure
