@@ -1,0 +1,56 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2 (0x2)
+        Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C=MX, ST=NuevoLeon, L=Monterrey, O=ec2-3-142-114-187.us-east-2.compute.amazonaws.com, OU=ec2-3-142-114-187.us-east-2.compute.amazonaws.com, C>
+        Validity
+            Not Before: Jun  6 18:40:55 2023 GMT
+            Not After : Jun  5 18:40:55 2024 GMT
+        Subject: C=MX, ST=NuevoLeon, O=ec2-3-142-114-187.us-east-2.compute.amazonaws.com, OU=ec2-3-142-114-187.us-east-2.compute.amazonaws.com, CN=ec2-3-142->
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:df:6d:4f:ae:29:c9:70:48:a8:e0:ba:7f:15:cb:
+                    ef:b6:b5:49:10:5a:4d:06:be:e0:9c:2a:08:9d:3a:
+                    db:90:1b:fe:b4:c3:69:2a:59:9e:da:4e:07:2e:c9:
+                    87:7b:c0:bb:12:e3:82:a6:e9:0a:69:c0:38:ed:4b:
+                    f0:6a:6f:b2:ce
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:FALSE
+            X509v3 Subject Key Identifier:
+                F3:D8:DA:A7:42:AE:9B:58:49:F4:4B:8C:AE:A7:4F:61:B5:85:36:AE
+            X509v3 Authority Key Identifier:
+                D7:E0:B2:58:A7:D6:36:5B:42:8D:E9:8B:FB:3A:D1:8F:E1:F5:F4:13
+    Signature Algorithm: ecdsa-with-SHA256
+    Signature Value:
+        30:45:02:21:00:f1:85:a6:8a:1a:f6:24:d5:7d:f1:d4:b8:08:
+        dd:25:4a:1d:92:b5:a5:66:df:fc:af:30:48:fe:cc:0f:78:c0:
+        1a:02:20:6a:09:c2:2e:ae:ab:14:0f:3c:10:ec:7e:27:72:9d:
+        d9:68:67:e3:0c:c5:e4:ea:51:19:4f:90:b6:f6:c0:a7:ee
+-----BEGIN CERTIFICATE-----
+MIIDjzCCAzWgAwIBAgIBAjAKBggqhkjOPQQDAjCCATExCzAJBgNVBAYTAk1YMRIw
+EAYDVQQIDAlOdWV2b0xlb24xEjAQBgNVBAcMCU1vbnRlcnJleTE6MDgGA1UECgwx
+ZWMyLTMtMTQyLTExNC0xODcudXMtZWFzdC0yLmNvbXB1dGUuYW1hem9uYXdzLmNv
+bTE6MDgGA1UECwwxZWMyLTMtMTQyLTExNC0xODcudXMtZWFzdC0yLmNvbXB1dGUu
+YW1hem9uYXdzLmNvbTE6MDgGA1UEAwwxZWMyLTMtMTQyLTExNC0xODcudXMtZWFz
+dC0yLmNvbXB1dGUuYW1hem9uYXdzLmNvbTFGMEQGCSqGSIb3DQEJARY3YWRtaW5A
+ZWMyLTMtMTQyLTExNC0xODcudXMtZWFzdC0yLmNvbXB1dGUuYW1hem9uYXdzLmNv
+bTAeFw0yMzA2MDYxODQwNTVaFw0yNDA2MDUxODQwNTVaMIIBHjELMAkGA1UEBhMC
+TVgxEjAQBgNVBAgMCU51ZXZvTGVvbjE6MDgGA1UECgwxZWMyLTMtMTQyLTExNC0x
+ODcudXMtZWFzdC0yLmNvbXB1dGUuYW1hem9uYXdzLmNvbTE6MDgGA1UECwwxZWMy
+LTMtMTQyLTExNC0xODcudXMtZWFzdC0yLmNvbXB1dGUuYW1hem9uYXdzLmNvbTE7
+MDkGA1UEAwwyZWMyLTMtMTQyLTExNC0xODcudXMtZWFzdC0yLmNvbXB1dGUuYW1h
+em9uYXdzLmNvbTIxRjBEBgkqhkiG9w0BCQEWN2FkbWluQGVjMi0zLTE0Mi0xMTQt
+MTg3LnVzLWVhc3QtMi5jb21wdXRlLmFtYXpvbmF3cy5jb20wWTATBgcqhkjOPQIB
+BggqhkjOPQMBBwNCAATfbU+uKclwSKjgun8Vy++2tUkQWk0GvuCcKgidOtuQG/60
+w2kqWZ7aTgcuyYd7wLsS44Km6QppwDjtS/Bqb7LOo00wSzAJBgNVHRMEAjAAMB0G
+A1UdDgQWBBTz2NqnQq6bWEn0S4yup09htYU2rjAfBgNVHSMEGDAWgBTX4LJYp9Y2
+W0KN6Yv7OtGP4fX0EzAKBggqhkjOPQQDAgNIADBFAiEA8YWmihr2JNV98dS4CN0l
+Sh2StaVm3/yvMEj+zA94wBoCIGoJwi6uqxQPPBDsfidyndloZ+MMxeTqURlPkLb2
+wKfu
+-----END CERTIFICATE-----
