@@ -1,10 +1,16 @@
+# Esta libreria la utilizamos para encriptar la información de manera asimetrica
 import rsa
+# Esta libreria la utilizamos para crear la conexión entre el servidor y el raspberry pi
 import socket
+# Esta libreria la utilizamos para hacer queries a la base de datos en RDS
 import psycopg2
 
+# Aquí elegimos un puerto y abrimos la conexión para escuchar inbound connections.
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(("",4545))
 s.listen()
+
+# Aquí almacenamos los detalles de la conexión a la base de datos
 
 conn = psycopg2.connect(
         dbname = "Cripto",
@@ -14,8 +20,12 @@ conn = psycopg2.connect(
         password = "Eugenius"
 )
 
+# Aquí abrimos la el archivo private.pem para poder utilizarlo para decifrar información
+
 with open("private.pem","rb") as f:
     private_key = rsa.PrivateKey.load_pkcs1(f.read())
+
+# Aqui estamos aceptando conexiones recibiendo información y enviandola a la base de datos de lo que nos llega del auditor
 
 client,address = s.accept()
 print("Connected")
@@ -37,6 +47,8 @@ while True:
 
     tiempo = tiempo.encode()
     client.send(tiempo)
+
+# Cerramos el cursor y la conexión.
 
 cur.close()
 conn.close()
